@@ -1,11 +1,21 @@
-﻿using DomainDrivenDesign.Domain.Products;
+﻿using DomainDrivenDesign.Domain.Abstractions;
+using DomainDrivenDesign.Domain.Products;
+using DomainDrivenDesign.Domain.Shared;
 
 namespace DomainDrivenDesign.Domain.Categories;
 
-public sealed class Category
+public sealed class Category : Entity
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; } = default!;
-    public ICollection<Product> Product { get; set; }= new List<Product>();
-  
+    public Category(Name name, Guid id) : base(id)
+    {
+        Name = name;
+    }
+
+    public Name Name { get; private set; } = default!;
+    public ICollection<Product> Products { get; private set; } = new List<Product>();
+
+    public void ChangeName(string name)
+    {
+        Name = new(name);
+    }
 }

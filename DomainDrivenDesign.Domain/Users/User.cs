@@ -1,17 +1,38 @@
-﻿namespace DomainDrivenDesign.Domain.Users;
+﻿using DomainDrivenDesign.Domain.Abstractions;
+using DomainDrivenDesign.Domain.Shared;
 
-public sealed class User
+namespace DomainDrivenDesign.Domain.Users;
+
+public sealed class User : Entity
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; } = default!;
-    public string Email { get; set; } = default!;
-    public string Password { get; set; } = default!;
-    public string Country { get; set; } = default!;
-    public string City { get; set; } = default!;
-    public string Street { get; set; } = default!;
-    public string FullAddress { get; set; } = default!;
-    public string PostalCode { get; set; } = default!;
-    //public DateTime CreatedAt { get; set; }
-    //public DateTime UpdatedAt { get; set; }
-    // Navigation properties can be added if needed, e.g., for roles or permissions
+    public User(Guid id, Name name, Email email, Password password, Address address) : base(id)
+    {
+        Name = name;
+        Email = email;
+        Password = password;
+        Address = address;
+    }
+
+    public Name Name { get; private set; }
+    public Email Email { get; private set; }
+    public Password Password { get; private set; }
+    public Address Address { get; private set; }
+
+    public void ChangeName(string name)
+    {
+        Name = new(name);
+    }
+    public void ChangePassword(string pasword)
+    {
+        Name = new(pasword);
+    }
+    public void ChangeEmail(string email)
+    {
+        Email = new(email);
+    }
+    public void ChangeAddress(string country, string city, string street,string fullAddress,string postalCode)
+    {
+        Address = new(country,city,street,fullAddress,postalCode);
+    }
+
 }

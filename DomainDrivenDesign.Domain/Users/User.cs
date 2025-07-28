@@ -5,7 +5,7 @@ namespace DomainDrivenDesign.Domain.Users;
 
 public sealed class User : Entity
 {
-    public User(Guid id, Name name, Email email, Password password, Address address) : base(id)
+    private User(Guid id, Name name, Email email, Password password, Address address) : base(id)
     {
         Name = name;
         Email = email;
@@ -17,6 +17,16 @@ public sealed class User : Entity
     public Email Email { get; private set; }
     public Password Password { get; private set; }
     public Address Address { get; private set; }
+
+    public static User CreateUser(Guid id, string name, string email, string password, string country, string city, string street, string fullAddress, string postalCode)
+    {
+        return new User(
+            id : Guid.NewGuid(),
+            name:new (name),
+            email: new (email), 
+            password:new (password), 
+           address: new Address(country, city, street, fullAddress, postalCode));
+    }
 
     public void ChangeName(string name)
     {

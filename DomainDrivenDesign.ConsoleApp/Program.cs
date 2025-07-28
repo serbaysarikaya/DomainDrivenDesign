@@ -1,8 +1,7 @@
 ﻿using BenchmarkDotNet.Running;
-using DomainDrivenDesign.ConsoleApp;
+using MediatR;
 
-namespace ConsoleApp;
-
+namespace DomainDrivenDesignUdemy.ConsoleApp;
 
 internal class Program
 {
@@ -15,10 +14,97 @@ internal class Program
 
 
         //DomainEventDispacther.Dispatch(order.DomainEvents);
-        BenchmarkRunner.Run<BenchMarkService>();
+        ////BenchmarkRunner.Run<BenchMarkService>();
         Console.ReadLine();
     }
 }
+
+public class Order
+{
+    private readonly IMediator _mediator;
+
+    public Order(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    public int Id { get; set; }
+    public string ProductName { get; set; }
+    public List<IDomainEvent> DomainEvents { get; } = new();
+    public void CreateOrder(int id, string productName)
+    {
+        Id = id;
+        ProductName = productName;
+        //kayıt işlemi
+        _mediator.Publish(new OrderCompletedEvent(id));
+        //DomainEvents.Add(new OrderCreatedEvent(id));
+    }
+}
+
+public class StockUpdateHandler : INotificationHandler<OrderCompletedEvent>
+{
+    public Task Handle(OrderCompletedEvent notification, CancellationToken cancellationToken)
+    {
+        //İşlemlerimizi yapabiliriz
+        return Task.CompletedTask;
+    }
+}
+
+public class SendMailHandler : INotificationHandler<OrderCompletedEvent>
+{
+    public Task Handle(OrderCompletedEvent notification, CancellationToken cancellationToken)
+    {
+        //Mail gönderme işlemi
+        return Task.CompletedTask;
+    }
+}
+
+public class SendSmsHandler : INotificationHandler<OrderCompletedEvent>
+{
+    public Task Handle(OrderCompletedEvent notification, CancellationToken cancellationToken)
+    {
+        //Mail gönderme işlemi
+        return Task.CompletedTask;
+    }
+}
+
+public class OrderCompletedEvent : INotification
+{
+    public int Id { get; }
+    public OrderCompletedEvent(int id)
+    {
+        Id = id;
+    }
+}
+
+public static class DomainEventDispacther
+{
+    public static void Dispatch(List<IDomainEvent> events)
+    {
+        foreach (var domainEvent in events)
+        {
+            if (domainEvent is OrderCreatedEvent orderEvent)
+            {
+                Console.WriteLine($"Order Event işleme başladı, Id: {orderEvent.OrderId}");
+            }
+        }
+    }
+}
+
+public interface IDomainEvent
+{
+
+}
+
+public class OrderCreatedEvent : IDomainEvent
+{
+    public int OrderId { get; }
+    public OrderCreatedEvent(int orderId)
+    {
+        OrderId = orderId;
+    }
+}
+
 public abstract class Entity : IEquatable<Entity>
 {
     public Guid Id { get; init; }

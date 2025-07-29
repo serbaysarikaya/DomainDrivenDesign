@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36203.30 d17.14
+VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDrivenDesign.Domain", "DomainDrivenDesign.Domain\DomainDrivenDesign.Domain.csproj", "{EB1B030B-FDED-4537-BC7F-D8705950A658}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDrivenDesign.ConsoleApp", "DomainDrivenDesign.ConsoleApp\DomainDrivenDesign.ConsoleApp.csproj", "{05ECC4CC-2357-4BA6-8C9A-F461EAE44A2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDrivenDesign.Application", "DomainDrivenDesign.Application\DomainDrivenDesign.Application.csproj", "{D01322B5-4847-4C5B-A34A-405CE7058DB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{05ECC4CC-2357-4BA6-8C9A-F461EAE44A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05ECC4CC-2357-4BA6-8C9A-F461EAE44A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05ECC4CC-2357-4BA6-8C9A-F461EAE44A2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01322B5-4847-4C5B-A34A-405CE7058DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01322B5-4847-4C5B-A34A-405CE7058DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01322B5-4847-4C5B-A34A-405CE7058DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01322B5-4847-4C5B-A34A-405CE7058DB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DomainDrivenDesign.Domain.Shared
+﻿namespace DomainDrivenDesign.Domain.Shared
 {
     public sealed record Currency
     {

@@ -6,12 +6,12 @@ using MediatR;
 
 internal sealed class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand>
 {
-    private readonly IOrdersRepository _orderRepository;
+    private readonly IOrderRepository _orderRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMediator _mediator;
 
 
-    public CreateOrderCommandHandler(IOrdersRepository orderRepository, IUnitOfWork unitOfWork, IMediator mediator)
+    public CreateOrderCommandHandler(IOrderRepository orderRepository, IUnitOfWork unitOfWork, IMediator mediator)
     {
         _orderRepository = orderRepository;
         _unitOfWork = unitOfWork;

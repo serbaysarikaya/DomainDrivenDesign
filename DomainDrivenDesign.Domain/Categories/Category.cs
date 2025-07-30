@@ -6,6 +6,10 @@ namespace DomainDrivenDesign.Domain.Categories;
 
 public sealed class Category : Entity
 {
+    private Category(Guid id) : base(id)
+    {
+
+    }
     public Category(Name name, Guid id) : base(id)
     {
         Name = name;
